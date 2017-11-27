@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.color{color:yellow;}
+			.background{background:red;}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div @click.self="parent">
+				parent
+				<!--self将事件绑定在自己身上，自事件冒泡不会触发-->
+				<div>middle</div>
+					<div @click.stop="child">child</div>
+				</div>
+				<a href="http://wwww.baidu.com" @click.prevent>百度</a>
+				<!--prevent阻止默认事件-->
+				<!---------------------------------->
+				
+				<input typ="text" @keyup.space="parent">
+				
+				<!--动态绑定数据-->
+				<div :class="class1">132465</div>
+				
+		</div>
+		<script src="https://unpkg.com/vue"></script>
+		<script>
+			//阻止冒泡事件
+			
+			var vm = new Vue({
+				el:'#app',
+				data:{
+					class1:'color',
+					class2:'background'
+				},
+				methods:{
+					parent() {
+						alert('父亲');
+					},
+					child() {
+						alert('儿子');
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

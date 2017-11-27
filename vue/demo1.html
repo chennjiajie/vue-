@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+    	*{margin:0;padding:0;}
+    	input{background:transparent;border:0;outline:none;}
+    	.shuru{width:100%;height:20px;background:#fff;box-shadow:0 0 8px #FF4500;padding:4px;}
+    	.shuru input{width:100%;}
+    	.con{width:100%;}
+    	.header{width:100%;background:orangered;}
+    	.header p{height:30px;line-height:30px;color:#fff;width:50%;margin:0 auto;text-align:center;}
+    	.main{width:60%;margin:100px auto;}
+    	ul{margin-top:10px;}
+    	ul li{list-style:none;line-height:2;}
+    	ul.compared li{text-decoration: line-through;color:#f1f1f1;background:#ccc;}
+    </style>
+</head>
+<body>
+    <div class="con">
+    	<div class="header"><p>任务列表</p></div>
+        <div class="main">
+        	<div class="shuru">
+        		<input type="text" name="" id="" value="" v-on:keyup.enter="addTodo(123,$event)" v-model="todo"/>
+        	</div>
+            <ul class="todo-list compared">
+                <li class="todo" v-for="item in list">
+					{{item.title}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		*{padding:0;margin:0;}
+		.face{width:100%;height:100px;background-color:red;}
+		.msg{width:100%;height:100px;background-color:blue;}
+	</style>
+	<body>
+		<div class="con">
+			<input type="radio" id="one" value="face" v-model="classValue">
+			<label for="one">笑脸</label>&nbsp;&nbsp;
+			<input type="radio" id="two" value="msg" v-model="classValue">
+			<label for="two">信息</label>
+			<div :class="classValue">{{innerText}}</div>
+			<p>{{classValue}}</p>
+		</div>
+		<script src="https://unpkg.com/vue"></script>
+		<script>
+			var dataList = {
+					classValue:'face',
+					innerText:'大家好，欢迎来到麦子学院'
+				}
+			new Vue({
+				el:'.con',
+				data:dataList
+			})
+		</script>
+	</body>
+</html>

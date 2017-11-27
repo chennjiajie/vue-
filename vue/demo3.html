@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{padding:0;margin:0;}
+			.container{width:400px;height:200px;background-color:#abcdef;position:relative;box-shadow: 0 0 8px #ccc;}
+			.con{padding:6px;}
+			.con-title p{line-height:2;font-size:16px;color:#000;text-align:center;}
+			.con-c p{font-size:14px;color:#000;}
+			.btn{position:absolute;right:26px;bottom:12px;}
+			.btn input{width:60px;height:20px;line-height:20px;color:#fff;background-color:#abcdef;}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!--<div class="container">
+				<div class="con">
+					<div class="con-title">
+						<p>模态框</p>
+					</div>
+					<div class="con-c">
+						<p>内容</p>
+					</div>
+					<div class="btn">
+						<input type="button" value="确定"/>
+						<input type="button" value="取消"/>
+					</div>
+				</div>
+			</div>-->
+			<custom-modal modal-title="提醒" @on-ok="ok">
+					<ul slot="modal-content">
+						<li v-for="item of list">{{item}}</li>
+					</ul>
+			</custom-modal>
+		</div>
+		<script src="https://unpkg.com/vue"></script>
+		<script>
+			Vue.component('custom-modal',{
+				props:{
+					modalTitle:{
+						type:String,
+						default:'这是一个模态框'
+					}
+				},
+				template:`<div class="container">
+				<div class="con">
+					<div class="con-title">
+						<p>{{modalTitle}}</p>
+					</div>
+					<div class="con-c">
+						<div>
+						<slot name="modal-content">内容</slot>
+						</div>
+					</div>
+					<div class="btn">
+						<slot name="modal-footer">
+						<input type="button" value="确定" @click="okhandle"/>
+						<input type="button" value="取消"/>
+						</slot>
+					</div>
+				</div>
+			</div>`,
+			methods:{
+				okhandle(){
+					alert('触发了');
+					this.$emit('on-ok');
+				}
+			}
+			})
+			var list = [...'妙味课堂'];
+			new Vue({
+				el:'#app',
+				data:{
+					list:list
+				},
+				methods:{
+					ok() {
+						alert('父组件要做什么');
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
